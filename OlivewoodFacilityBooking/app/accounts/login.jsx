@@ -1,5 +1,6 @@
 import { UserContext } from "@/contexts/UserContext";
-import { useRouter } from "expo-router";
+import { CommonActions } from "@react-navigation/native";
+import { useNavigation, useRouter } from "expo-router";
 import { useContext, useState } from "react";
 import { Pressable, StatusBar, StyleSheet, Text, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
@@ -10,13 +11,23 @@ function Login() {
     const [number, setNumber] = useState('');
     const [pin, setPin] = useState('');
     const { handleLogin, loginErr } = useContext(UserContext);
+    const navigation = useNavigation();
     
     function createAccount() {
         router.navigate('/accounts/createAccount');
     }
 
-    function login() {
-        handleLogin(number, pin);
+    async function login() {
+        await handleLogin(number, pin);
+        if (handleLogin) {
+        navigation.dispatch(
+            CommonActions.reset({
+                index: 0,
+                routes: [{ name: "facilities/facilities" }],
+            })
+        );
+
+        }
     }
 
     function resetPin() {
@@ -32,9 +43,9 @@ function Login() {
                 <Text style={styles.loginText}>Log In</Text>
                 <View style={styles.formHolder}>
                     <Text style={styles.inputLabel}>Cell Number</Text>
-                    <TextInput style={styles.input} value={number} placeholder="Cell Number..." placeholderTextColor="#a3b18a" onChangeText={(e) => setNumber(e)} />
+                    <TextInput style={styles.input} keyboardType="number-pad" value={number} placeholder="Cell Number..." placeholderTextColor="#a3b18a" onChangeText={(e) => setNumber(e)} />
                     <Text style={styles.inputLabel}>PIN</Text>
-                    <TextInput style={[styles.input, {marginBottom: 8}]} value={pin} placeholder="PIN..." placeholderTextColor="#a3b18a" onChangeText={(e) => setPin(e)} secureTextEntry={true} />
+                    <TextInput style={[styles.input, {marginBottom: 8}]} keyboardType="number-pad" value={pin} placeholder="PIN..." placeholderTextColor="#a3b18a" onChangeText={(e) => setPin(e)} secureTextEntry={true} />
                     <Text>{loginErr}</Text>
                     <Pressable onPress={resetPin}>
                         <Text style={styles.resetLink}>Reset PIN</Text>
@@ -122,7 +133,11 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         marginTop: 40,
-        elevation: 5
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
     },
     buttonPressed: {
         backgroundColor: "#4c684b",
@@ -132,7 +147,11 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         marginTop: 40,
-        elevation: 5
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
     },
     buttonText: {
         fontFamily: 'Figtree-VariableFont_wght',

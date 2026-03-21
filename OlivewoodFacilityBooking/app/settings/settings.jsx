@@ -1,14 +1,16 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Octicons } from '@react-native-vector-icons/octicons';
-import { useRouter } from "expo-router";
+import { useNavigation, useRouter } from "expo-router";
 import { useContext, useEffect, useState } from "react";
 import { TextInput } from "react-native-gesture-handler";
 import { UserContext } from "@/contexts/UserContext";
 import { acceptRequest, editUser, getUser, test } from "@/api/api";
+import { CommonActions } from "@react-navigation/native";
 
 function Settings() {
     const { logoutHandler } = useContext(UserContext);
+    const navigation = useNavigation();
 
     const router = useRouter();
     const [user, setUser] = useState({});
@@ -79,6 +81,16 @@ function Settings() {
         setNewInfo(info);
     }
 
+    function logoutFunc() {
+        logoutHandler();
+        navigation.dispatch(
+            CommonActions.reset({
+                index: 0,
+                routes: [{ name: "index" }],
+            })
+        );
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
@@ -143,7 +155,7 @@ function Settings() {
             <Pressable style={({pressed}) => [
                 pressed ? styles.buttonPressed : styles.button
             ]}
-            onPress={logoutHandler}>
+            onPress={logoutFunc}>
                 <Text style={styles.buttonText}>Log Out</Text>
             </Pressable>
             {edit ? (
@@ -259,7 +271,11 @@ const styles = StyleSheet.create({
         marginRight: 'auto',
         marginTop: 10,
         marginBottom: 10,
-        elevation: 5
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
     },
     buttonPressed: {
         backgroundColor: "#4c684b",
@@ -270,7 +286,11 @@ const styles = StyleSheet.create({
         marginRight: 'auto',
         marginTop: 10,
         marginBottom: 10,
-        elevation: 5
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
     },
     buttonText: {
         fontFamily: 'Figtree-VariableFont_wght',
@@ -326,6 +346,10 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         borderRadius: 15,
         elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
         position: 'relative'
     },
     inputLabel: {
@@ -342,6 +366,10 @@ const styles = StyleSheet.create({
         height: 40,
         width: "100%",
         elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
         backgroundColor: '#f5f5f5',
         color: '#344E41',
         fontFamily: 'Figtree-VariableFont_wght',

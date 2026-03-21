@@ -95,6 +95,10 @@ const styles = StyleSheet.create({
         height: 40,
         width: "100%",
         elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
         backgroundColor: '#f5f5f5',
         color: '#344E41',
         fontFamily: 'Figtree-VariableFont_wght',
@@ -120,7 +124,11 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         marginTop: 30,
-        elevation: 5
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
     },
     buttonPressed: {
         backgroundColor: "#4c684b",
@@ -130,7 +138,11 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         marginTop: 30,
-        elevation: 5
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
     },
     buttonText: {
         fontFamily: 'Figtree-VariableFont_wght',

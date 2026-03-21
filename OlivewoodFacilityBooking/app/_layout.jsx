@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import UserProvider from '@/contexts/UserContext';
+import Root from './root';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,15 +31,7 @@ export default function RootLayout() {
     <GestureHandlerRootView>
       <UserProvider>
         <SafeAreaProvider>
-          <Stack screenOptions={{ headerShown: false, headerTitle: "OlivewoodFacilityBooking", headerShadowVisible: false}}>
-            <Stack.Screen name='index' />
-            <Stack.Screen name='accounts/login' />
-            <Stack.Screen name='accounts/createAccount' />
-            <Stack.Screen name='facilities/facilities' />
-            <Stack.Screen name='settings/settings' />
-            <Stack.Screen name='accounts/pinResetInfo' />
-            <Stack.Screen name='accounts/resetDenied' />
-          </Stack>
+           <Root />    
         </SafeAreaProvider> 
       </UserProvider>       
     </GestureHandlerRootView>         

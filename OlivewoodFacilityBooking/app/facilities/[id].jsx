@@ -222,7 +222,7 @@ function Facility() {
                         </Pressable>
                         <Text style={styles.addHeading}>New Booking</Text>
                         <Pressable style={({pressed}) => [
-                            pressed ? [styles.dateHolderPressed, {width: '35%'}] : [styles.dateHolder, {width: '35%'}]
+                            pressed ? styles.dateHolderPressed : styles.dateHolder
                         ]}
                         onPress={() => setShow(true)}>
                             <Octicons name='calendar' color="#344e41" size={16}/>
@@ -290,7 +290,7 @@ function Facility() {
                         </Pressable>
                         <Text style={styles.addHeading}>Edit Booking</Text>
                         <Pressable style={({pressed}) => [
-                            pressed ? [styles.dateHolderPressed, {width: '35%'}] : [styles.dateHolder, {width: '35%'}]
+                            pressed ? styles.dateHolderPressed : styles.dateHolder
                         ]}
                         onPress={() => setShow(true)}>
                             <Octicons name='calendar' color="#344e41" size={16}/>
@@ -368,7 +368,7 @@ const styles = StyleSheet.create({
     },
     dateHolder: {
         flexDirection: 'row',
-        width: '25%',
+        width: 'auto',
         marginLeft: 'auto',
         marginRight: 'auto',
         justifyContent: 'space-between',
@@ -377,7 +377,7 @@ const styles = StyleSheet.create({
     },
     dateHolderPressed: {
         flexDirection: 'row',
-        width: '25%',
+        width: 'auto',
         marginLeft: 'auto',
         marginRight: 'auto',
         justifyContent: 'space-between',
@@ -404,6 +404,10 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         borderRadius: 15,
         elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
         position: 'relative'
     },
     heading: {
@@ -481,7 +485,11 @@ const styles = StyleSheet.create({
         marginRight: 'auto',
         marginTop: 10,
         marginBottom: 10,
-        elevation: 5
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
     },
     buttonPressed: {
         backgroundColor: "#4c684b",
@@ -492,7 +500,11 @@ const styles = StyleSheet.create({
         marginRight: 'auto',
         marginTop: 10,
         marginBottom: 10,
-        elevation: 5
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
     },
     delete: {
         backgroundColor: "#971515",
@@ -503,7 +515,11 @@ const styles = StyleSheet.create({
         marginRight: 'auto',
         marginTop: 10,
         marginBottom: 10,
-        elevation: 5
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
     },
     deletePressed: {
         backgroundColor: "#6b1313",
@@ -514,7 +530,11 @@ const styles = StyleSheet.create({
         marginRight: 'auto',
         marginTop: 10,
         marginBottom: 10,
-        elevation: 5
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
     },
     buttonText: {
         fontFamily: 'Figtree-VariableFont_wght',
@@ -570,6 +590,10 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         borderRadius: 15,
         elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
         position: 'relative'
     },
     addBookingHolder: {
@@ -583,6 +607,10 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         borderRadius: 15,
         elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
         position: 'relative'
     },
     inputLabel: {
@@ -599,6 +627,10 @@ const styles = StyleSheet.create({
         height: 40,
         width: "100%",
         elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
         backgroundColor: '#f5f5f5',
         color: '#344E41',
         fontFamily: 'Figtree-VariableFont_wght',
@@ -641,6 +673,10 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderRadius: 15,
         elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
         backgroundColor: '#f5f5f5'
     },
     slotText: {
@@ -661,7 +697,11 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         width: '80%',
         marginBottom: 'auto',
-        elevation: 5
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
     },
     item: {
         width: '100%',
